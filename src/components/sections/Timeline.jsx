@@ -231,12 +231,6 @@ export default function Timeline() {
           transition={{ duration: 0.5 }}
           className="mt-20 text-center space-y-3"
         >
-          <p className="text-sm text-slate-500">
-            N.b. ISE and IM Students have their Final Presentation and Viva/Website Evaluation on the 27th and 28th of April 2026.
-          </p>
-          <p className="text-base italic font-semibold text-slate-700">
-            "Deadlines don't chase professionals — professionals beat deadlines."
-          </p>
           <div className="flex items-center justify-center gap-6 mt-6">
             <div className="flex items-center gap-2 text-sm text-slate-500">
               <div className="w-4 h-4 rounded-full border-4 border-emerald-500 bg-white" />
