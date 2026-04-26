@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle2, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 const milestones = [
   {
@@ -154,17 +154,17 @@ export default function Timeline() {
                   className="relative flex flex-col md:flex-row items-center"
                 >
                   {/* ── LEFT SIDE ── */}
-                  <div className="w-full md:w-[calc(50%-2rem)] flex md:justify-end md:pr-8 mb-4 md:mb-0">
+                  <div className={`w-full md:w-[calc(50%-2rem)] flex md:justify-end md:pr-8 mb-4 md:mb-0 ${isRight ? 'hidden md:flex' : 'flex'}`}>
                     {isRight ? (
-                      /* date label */
-                      <div className="text-right hidden md:block">
+                      /* date label (Desktop only) */
+                      <div className="text-right">
                         <p className="text-blue-600 font-bold text-sm">{item.date}</p>
                         <Badge className={`mt-1 ${isCompleted ? 'bg-slate-900 hover:bg-slate-800' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
                           {item.status}
                         </Badge>
                       </div>
                     ) : (
-                      /* card */
+                      /* card (Both) */
                       <Card className="w-full shadow-sm border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
                         <CardContent className="p-6">
                           <h3 className="text-lg font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition-colors">
@@ -189,9 +189,9 @@ export default function Timeline() {
                   </div>
 
                   {/* ── RIGHT SIDE ── */}
-                  <div className="w-full md:w-[calc(50%-2rem)] flex md:justify-start md:pl-8">
+                  <div className={`w-full md:w-[calc(50%-2rem)] flex md:justify-start md:pl-8 ${isRight ? 'flex' : 'hidden md:flex'}`}>
                     {isRight ? (
-                      /* card */
+                      /* card (Both) */
                       <Card className="w-full shadow-sm border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
                         <CardContent className="p-6">
                           <h3 className="text-lg font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition-colors">
@@ -208,8 +208,8 @@ export default function Timeline() {
                         </CardContent>
                       </Card>
                     ) : (
-                      /* date label */
-                      <div className="text-left hidden md:block">
+                      /* date label (Desktop only) */
+                      <div className="text-left">
                         <p className="text-blue-600 font-bold text-sm">{item.date}</p>
                         <Badge className={`mt-1 ${isCompleted ? 'bg-slate-900 hover:bg-slate-800' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
                           {item.status}

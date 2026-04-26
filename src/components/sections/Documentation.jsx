@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Download, FileText, FileSpreadsheet, BookOpen, Presentation, FolderOpen, ScrollText } from 'lucide-react';
+import { FileText, FolderOpen, Eye } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,19 +12,51 @@ const fadeUp = {
   })
 };
 
-const docs = [
-  { icon: ScrollText,       color: "text-orange-600",  bg: "bg-orange-100",  title: "Technical Assessment Form (TAF)", size: "1.2 MB", type: "PDF",  link: "#" },
-  { icon: BookOpen,         color: "text-purple-600",  bg: "bg-purple-100",  title: "Research Proposal",               size: "2.8 MB", type: "PDF",  link: "#" },
-  { icon: Presentation,     color: "text-blue-600",    bg: "bg-blue-100",      title: "Progress Presentation 1 (PP1)",   size: "4.5 MB", type: "PPTX", link: "#" },
-  { icon: Presentation,     color: "text-cyan-600",    bg: "bg-cyan-100",      title: "Progress Presentation 2 (PP2)",   size: "5.1 MB", type: "PPTX", link: "#" },
-  { icon: FileText,         color: "text-emerald-600", bg: "bg-emerald-100", title: "Final Research Report",            size: "8.3 MB", type: "PDF",  link: "#" },
-  { icon: FileSpreadsheet,  color: "text-yellow-600",  bg: "bg-yellow-100",  title: "Buildora Research Paper",          size: "3.7 MB", type: "PDF",  link: "#" },
+const documentGroups = [
+  {
+    title: "TAF Document",
+    desc: "Topic Assessment Form for Research Project",
+    status: "Available",
+    files: [
+      { name: "Topic Assessment Form", size: "1.5 MB", previewLink: "https://drive.google.com/file/d/1kjCtVipgWUAb0LhjsmXGX5r7veErBK_I/view?usp=sharing", downloadLink: "https://drive.google.com/file/d/1kjCtVipgWUAb0LhjsmXGX5r7veErBK_I/view?usp=sharing" }
+    ]
+  },
+  {
+    title: "Proposal Documents",
+    desc: "Research proposal documents for all team members",
+    status: "Available",
+    files: [
+      { name: "Proposal Document - Vithana D.T.M.", size: "2.1 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Proposal Document - Madhushan S.M.P.B.", size: "2.3 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Proposal Document - Jayashani V.P.N.", size: "2.5 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Proposal Document - U.U.M. Hewage", size: "1.8 MB", previewLink: "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/view?usp=sharing", downloadLink: "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/view?usp=sharing" },
+    ]
+  },
+  {
+    title: "Final Reports",
+    desc: "Individual final reports for each team member",
+    status: "Available",
+    files: [
+      { name: "Final Report - Vithana D.T.M.", size: "3.5 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Final Report - Madhushan S.M.P.B.", size: "4.2 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Final Report - Jayashani V.P.N.", size: "4.8 MB", previewLink: "#", downloadLink: "#" },
+      { name: "Final Report - U.U.M. Hewage", size: "5.1 MB", previewLink: "#", downloadLink: "#" },
+    ]
+  },
+  {
+    title: "Research Paper",
+    desc: "Complete research paper with methodology, findings, and conclusions",
+    status: "Available",
+    files: [
+      { name: "Research Paper", size: "7.2 MB", previewLink: "#", downloadLink: "#" }
+    ]
+  }
 ];
 
 export default function Documentation() {
   return (
     <section id="documents" className="py-24 bg-slate-50 w-full overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-12 w-full">
 
         {/* Header */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} className="text-center mb-16">
@@ -32,64 +64,71 @@ export default function Documentation() {
             <FolderOpen className="w-3.5 h-3.5" />
             Documentation
           </motion.div>
-          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5">
+          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight text-blue-900 mb-5">
             Project Documents
           </motion.h2>
           <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            All research artefacts, proposals, presentations, and reports — ready to download.
+            Access all research documents, reports, and supporting materials for this project.
           </motion.p>
         </motion.div>
 
-        {/* Doc cards */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
-          {docs.map((doc, i) => (
-            <motion.div key={i} variants={fadeUp} custom={i} whileHover={{ y: -5 }} transition={{ type: "spring", stiffness: 300 }}>
-              <Card className="group border-slate-200 hover:border-blue-300 hover:shadow-md transition-all duration-300 h-full bg-white">
-                <CardContent className="p-6 flex flex-col gap-5 h-full">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border border-white ${doc.bg} flex-shrink-0`}>
-                      <doc.icon className={`w-6 h-6 ${doc.color}`} />
+        {/* Grouped Doc Cards */}
+        <div className="space-y-8 w-full">
+          {documentGroups.map((group, groupIdx) => (
+            <motion.div 
+              key={groupIdx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: groupIdx * 0.1 }}
+            >
+              <Card className="border-slate-200 shadow-sm overflow-hidden bg-white">
+                <CardContent className="p-0">
+                  {/* Group Header */}
+                  <div className="p-6 border-b border-slate-100 flex items-start justify-between">
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900">{group.title}</h3>
+                        <p className="text-sm text-slate-500">{group.desc}</p>
+                      </div>
                     </div>
-                    <Badge variant="outline" className={`text-xs font-bold ${doc.color} bg-slate-50 border-slate-200`}>{doc.type}</Badge>
+                    <Badge className="bg-slate-900 hover:bg-slate-900 text-white text-[10px] uppercase tracking-wider px-3 py-1">
+                      {group.status}
+                    </Badge>
                   </div>
 
-                  <div className="flex-1">
-                    <h3 className="font-bold text-slate-900 text-base leading-snug mb-1 group-hover:text-blue-600 transition-colors">{doc.title}</h3>
-                    <p className="text-sm text-slate-500">{doc.size}</p>
+                  {/* Files List */}
+                  <div className="p-6 bg-slate-50/50">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {group.files.map((file, fileIdx) => (
+                        <div 
+                          key={fileIdx} 
+                          className="flex items-center justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-300 transition-colors group/file shadow-sm"
+                        >
+                          <div className="min-w-0 flex-1 mr-4">
+                            <p className="font-semibold text-slate-800 text-sm truncate group-hover/file:text-blue-600 transition-colors">{file.name}</p>
+                            <p className="text-xs text-slate-400 mt-0.5">{file.size}</p>
+                          </div>
+                          <div className="flex gap-2 shrink-0">
+                            <Button size="sm" asChild className="bg-slate-900 hover:bg-slate-800 text-white h-9 px-4 rounded-lg shadow-sm transition-all active:scale-95">
+                              <a href={file.previewLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                <Eye className="w-3.5 h-3.5" />
+                                <span className="font-bold text-xs">View</span>
+                              </a>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-
-                  <Button variant="outline" size="sm" asChild className="w-full border-slate-200 text-slate-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all group/btn">
-                    <a href={doc.link} target="_blank" rel="noopener noreferrer">
-                      <Download className="w-4 h-4 mr-2 group-hover/btn:-translate-y-0.5 transition-transform" />
-                      Download
-                    </a>
-                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Bottom callout */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} custom={0} className="mt-12">
-          <Card className="border-blue-200 bg-blue-50 shadow-sm">
-            <CardContent className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center">
-                  <FolderOpen className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <p className="font-bold text-blue-900">Full Document Package</p>
-                  <p className="text-sm text-blue-800/80">All 6 documents · Group 25-26J-168</p>
-                </div>
-              </div>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 rounded-full shrink-0 shadow-sm">
-                <Download className="w-4 h-4 mr-2" />
-                Download All
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
+        </div>
 
       </div>
     </section>

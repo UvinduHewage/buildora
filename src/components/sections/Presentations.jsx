@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Layers, Monitor, Trophy } from 'lucide-react';
+import { Monitor } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,39 +14,39 @@ const fadeUp = {
 
 const presentations = [
   {
-    icon: Layers,
-    color: "text-blue-600",
-    bg: "bg-blue-100",
-    borderColor: "bg-blue-500",
-    badge: "PP1",
+    title: "Proposal Presentation",
+    date: "March 15, 2025",
+    slides: "25 slides",
+    duration: "20 minutes",
+    desc: "Initial project proposal and research methodology overview",
+    status: "Completed",
+    link: "#"
+  },
+  {
     title: "Progress Presentation 1",
-    slides: "28 Slides",
-    date: "Dec 2025",
-    desc: "Initial research findings, dataset preparation overview, preliminary model architecture, and literature review summary.",
-    link: "#"
+    date: "April 20, 2025",
+    slides: "30 slides",
+    duration: "25 minutes",
+    desc: "Literature review findings and preliminary data collection",
+    status: "Completed",
+    link: "https://drive.google.com/file/d/1tH3kXSFZHQblJ2B5u3BDqZkevEWv97YN/view?usp=sharing"
   },
   {
-    icon: Monitor,
-    color: "text-purple-600",
-    bg: "bg-purple-100",
-    borderColor: "bg-purple-500",
-    badge: "PP2",
     title: "Progress Presentation 2",
-    slides: "35 Slides",
-    date: "Mar 2026",
-    desc: "Module integration status, preliminary accuracy results, UI/UX prototype walkthrough, and system performance benchmarks.",
-    link: "#"
+    date: "May 25, 2025",
+    slides: "35 slides",
+    duration: "30 minutes",
+    desc: "Data analysis results and initial findings discussion",
+    status: "Completed",
+    link: "https://drive.google.com/file/d/1wlfZxJIx-RGqJiSEaMr_fFL_NBzLGPKM/view?usp=sharing"
   },
   {
-    icon: Trophy,
-    color: "text-yellow-600",
-    bg: "bg-yellow-100",
-    borderColor: "bg-yellow-500",
-    badge: "Final",
-    title: "Final Project Defence",
-    slides: "42 Slides",
-    date: "Apr 2026",
-    desc: "Complete system demonstration, validated ML results (R²=0.9531), research conclusions, and future work recommendations.",
+    title: "Final Presentation",
+    date: "June 30, 2025",
+    slides: "40 slides",
+    duration: "35 minutes",
+    desc: "Complete research findings, conclusions, and recommendations",
+    status: "Completed",
     link: "#"
   },
 ];
@@ -54,52 +54,55 @@ const presentations = [
 export default function Presentations() {
   return (
     <section id="presentations" className="py-24 w-full bg-white overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-12 w-full">
 
         {/* Header */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} className="text-center mb-16">
-          <motion.div variants={fadeUp} custom={0} className="inline-flex items-center gap-2 text-purple-600 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-5">
+          <motion.div variants={fadeUp} custom={0} className="inline-flex items-center gap-2 text-blue-500 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-5">
             <Monitor className="w-3.5 h-3.5" />
             Presentations
           </motion.div>
-          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5">
+          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight text-blue-900 mb-5">
             Research Presentations
           </motion.h2>
           <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Three presentation milestones capturing the full journey from proposal through to final defence.
+            View slides and materials from past and upcoming research presentations.
           </motion.p>
         </motion.div>
 
-        {/* Cards */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid md:grid-cols-3 gap-8 w-full">
+        {/* Cards Grid */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid md:grid-cols-2 gap-8 w-full">
           {presentations.map((pres, i) => (
-            <motion.div key={i} variants={fadeUp} custom={i} whileHover={{ y: -8 }} transition={{ type: "spring", stiffness: 280 }}>
-              <Card className="group border-slate-200 hover:shadow-lg transition-all duration-300 flex flex-col h-full overflow-hidden bg-white">
-                {/* Top accent line */}
-                <div className={`h-1.5 w-full ${pres.borderColor}`} />
-                <CardContent className="p-8 flex flex-col gap-5 flex-1">
-                  <div className="flex items-start justify-between">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${pres.bg}`}>
-                      <pres.icon className={`w-7 h-7 ${pres.color}`} />
+            <motion.div key={i} variants={fadeUp} custom={i}>
+              <Card className="group border-slate-200 hover:shadow-md transition-all duration-300 flex flex-col h-full overflow-hidden bg-white shadow-sm">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
+                      <Monitor className="w-6 h-6 text-blue-600" />
                     </div>
-                    <Badge variant="outline" className={`font-bold ${pres.color} bg-slate-50 border-slate-200`}>{pres.badge}</Badge>
+                    <Badge className="bg-slate-900 text-white text-[10px] uppercase tracking-wider px-3 py-1">
+                      {pres.status}
+                    </Badge>
                   </div>
 
-                  <div className="flex-1">
-                    <p className="text-xs text-slate-400 mb-1 uppercase tracking-widest font-semibold">{pres.date}</p>
-                    <h3 className="font-bold text-slate-900 text-xl mb-3 group-hover:text-blue-600 transition-colors">{pres.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{pres.desc}</p>
+                  <div className="flex-1 mb-8">
+                    <h3 className="font-bold text-slate-900 text-2xl mb-2 group-hover:text-blue-600 transition-colors">{pres.title}</h3>
+                    <div className="flex items-center gap-3 text-sm text-slate-500 mb-4">
+                      <span>{pres.date}</span>
+                      <span>•</span>
+                      <span>{pres.slides}</span>
+                      <span>•</span>
+                      <span>{pres.duration}</span>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed">{pres.desc}</p>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <span className={`text-sm font-bold ${pres.color}`}>{pres.slides}</span>
-                    <Button variant="outline" size="sm" asChild className="border-slate-200 text-slate-700 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all">
-                      <a href={pres.link} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Slides
-                      </a>
-                    </Button>
-                  </div>
+                  <Button size="lg" asChild className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold h-12 rounded-xl transition-all active:scale-[0.98]">
+                    <a href={pres.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                      <Monitor className="w-4 h-4" />
+                      View Slides
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
