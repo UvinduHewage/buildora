@@ -38,16 +38,12 @@ const categories = [
     bg: "bg-purple-50",
     title: "Proposal Documents",
     subtitle: "Research proposal documents for all team members",
-    files: members.map((m, idx) => ({
-      name: `Proposal Document — ${m.short}`,
-      size: "2.2 MB",
-      preview: idx === 3
-        ? "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/preview"
-        : "#",
-      download: idx === 3
-        ? "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/view?usp=sharing"
-        : "#",
-    })),
+    files: [
+      { name: "Proposal Document — Vithana D T M", size: "2.2 MB", preview: "https://drive.google.com/file/d/1XaYMnlC894gUne_l1w_t7SH_2hS_bJiZ/preview", download: "https://drive.google.com/file/d/1XaYMnlC894gUne_l1w_t7SH_2hS_bJiZ/view?usp=sharing" },
+      { name: "Proposal Document — Madhushan S M P B", size: "2.2 MB", preview: "#", download: "#" },
+      { name: "Proposal Document — Jayashani V P N", size: "2.2 MB", preview: "https://drive.google.com/file/d/1gRiLsdJfWUXNY_UoPm0P0g5K5kYzzTNL/preview", download: "https://drive.google.com/file/d/1gRiLsdJfWUXNY_UoPm0P0g5K5kYzzTNL/view?usp=sharing" },
+      { name: "Proposal Document — Hewage U U M", size: "2.2 MB", preview: "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/preview", download: "https://drive.google.com/file/d/1CMWNfyJLeVOTAIOpo7F2KNI_05972AI6/view?usp=sharing" },
+    ],
   },
   {
     icon: FileText,

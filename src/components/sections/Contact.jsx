@@ -90,32 +90,33 @@ export default function Contact() {
 
         {/* CTA banner */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} custom={0}>
-          <div className="relative rounded-[3rem] overflow-hidden bg-slate-900 p-1 md:p-1.5 shadow-2xl shadow-blue-900/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-indigo-600/20 pointer-events-none" />
-            <div className="relative bg-slate-900 border border-slate-800 rounded-[2.8rem] p-12 md:p-20 text-center overflow-hidden">
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+          <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-950 shadow-2xl shadow-slate-900/20 border border-slate-800 p-12 md:p-24 text-center">
+            {/* Elegant Background Glows */}
+            <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-tl from-blue-600/10 to-transparent pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col items-center">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight text-balance">
+                Ready to Build the Future?
+              </h3>
+              <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
+                Join us in revolutionizing the construction industry with intelligent, data-driven solutions designed for tomorrow.
+              </p>
               
-              <div className="relative z-10">
-                <h3 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Ready to build the future?</h3>
-                <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-                  Join us in revolutionizing the construction industry with intelligent data-driven solutions.
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-6">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-12 py-8 rounded-2xl text-lg shadow-xl shadow-blue-600/20 w-full sm:w-auto">
-                      <Mail className="w-6 h-6 mr-3" />
-                      Email Team
-                    </Button>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-white hover:text-slate-900 px-12 py-8 rounded-2xl text-lg transition-all w-full sm:w-auto bg-transparent">
-                      <GitBranch className="w-6 h-6 mr-3" />
-                      GitHub Repo
-                    </Button>
-                  </motion.div>
-                </div>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-5 w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold px-10 py-7 rounded-2xl text-base shadow-xl shadow-blue-600/20 transition-all">
+                    <Mail className="w-5 h-5 mr-3" />
+                    Contact Team
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="w-full border-slate-700 bg-slate-800/40 hover:bg-slate-800 text-white hover:text-white px-10 py-7 rounded-2xl text-base backdrop-blur-md transition-all">
+                    <GitBranch className="w-5 h-5 mr-3" />
+                    GitHub Repo
+                  </Button>
+                </motion.div>
               </div>
             </div>
           </div>
