@@ -1,61 +1,113 @@
 import { motion } from 'framer-motion';
+import { Mail, GitBranch, Globe, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
-  return (
-    <footer className="bg-black text-zinc-400 py-14 border-t border-zinc-900 w-full">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
+  const currentYear = new Date().getFullYear();
 
-          {/* Brand */}
-          <div className="flex flex-col gap-4">
+  return (
+    <footer className="bg-[#0A0C10] text-slate-400 py-20 border-t border-slate-800/50 w-full relative overflow-hidden">
+      {/* Decorative background glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] -translate-y-1/2" />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+
+          {/* Brand & Mission */}
+          <div className="lg:col-span-1 space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-yellow-400 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-400/20">
-                <span className="font-black text-black text-xl">B</span>
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-600/20 group hover:rotate-6 transition-transform duration-500">
+                <span className="font-black text-white text-2xl">B</span>
               </div>
               <div>
-                <p className="text-white font-bold text-lg leading-none">Buildora</p>
-                <p className="text-xs text-zinc-500 mt-0.5">Group 25-26J-168</p>
+                <p className="text-white font-black text-2xl tracking-tighter">Buildora</p>
+                <p className="text-[10px] font-bold text-blue-500 uppercase tracking-[0.3em]">Research Project</p>
               </div>
             </div>
-            <p className="text-sm text-zinc-500 leading-relaxed">
-              An intelligent, integrated AI-powered construction project management system developed at SLIIT.
+            <p className="text-slate-400 leading-relaxed text-sm">
+              Revolutionizing the construction lifecycle through integrated AI, Computer Vision, 
+              and data-driven intelligence for the local SME sector.
             </p>
+            <div className="flex items-center gap-4">
+              {[GitBranch, Globe, Mail].map((Icon, i) => (
+                <button key={i} className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all duration-300">
+                  <Icon className="w-5 h-5" />
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Quick links */}
-          <div>
-            <p className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">Quick Links</p>
-            <ul className="space-y-2 text-sm">
+          {/* Platform Links */}
+          <div className="space-y-8">
+            <p className="text-white font-bold text-sm uppercase tracking-[0.2em]">Platform</p>
+            <ul className="space-y-4">
               {[
                 { label: "Research Foundation", href: "#research" },
                 { label: "Methodology",         href: "#methodology" },
                 { label: "Project Timeline",    href: "#timeline" },
-                { label: "Documentation",       href: "#documents" },
-                { label: "Our Team",            href: "#team" },
-                { label: "Contact",             href: "#contact" },
+                { label: "Our Modules",         href: "#modules" },
               ].map(link => (
                 <li key={link.label}>
-                  <a href={link.href} className="hover:text-yellow-400 transition-colors">{link.label}</a>
+                  <a href={link.href} className="text-sm hover:text-blue-500 hover:pl-2 transition-all duration-300 flex items-center gap-2 group">
+                    <div className="w-1 h-1 rounded-full bg-slate-700 group-hover:bg-blue-500" />
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Info */}
-          <div>
-            <p className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">Institution</p>
-            <div className="space-y-2 text-sm">
-              <p className="text-zinc-300 font-medium">Sri Lanka Institute of Information Technology</p>
-              <p>Faculty of Computing</p>
-              <p>Malabe, Sri Lanka</p>
-              <p className="mt-4 text-yellow-400/80 font-mono">Batch 2025/2026</p>
+          {/* Community Links */}
+          <div className="space-y-8">
+            <p className="text-white font-bold text-sm uppercase tracking-[0.2em]">Resources</p>
+            <ul className="space-y-4">
+              {[
+                { label: "Documentation",       href: "#documents" },
+                { label: "Research Paper",      href: "#research" },
+                { label: "Our Team",            href: "#team" },
+                { label: "Contact Us",          href: "#contact" },
+              ].map(link => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm hover:text-blue-500 hover:pl-2 transition-all duration-300 flex items-center gap-2 group">
+                    <div className="w-1 h-1 rounded-full bg-slate-700 group-hover:bg-blue-500" />
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <p className="text-white font-bold text-sm uppercase tracking-[0.2em]">Institution</p>
+            <div className="space-y-4 text-sm">
+              <div className="flex items-start gap-3">
+                <ExternalLink className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                <p className="text-slate-300">
+                  <span className="font-bold text-white">SLIIT</span><br />
+                  Faculty of Computing<br />
+                  Malabe, Sri Lanka
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-blue-500 shrink-0" />
+                <p>25-26J-168</p>
+              </div>
+              <div className="pt-2">
+                <span className="px-4 py-1.5 rounded-full bg-blue-600/10 text-blue-500 text-[10px] font-black uppercase tracking-widest border border-blue-500/20">
+                  Batch 2025/2026
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-zinc-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-600">
-          <p>© 2026 Buildora Research Project · Group 25-26J-168 · SLIIT</p>
-          <p>Built with React, Vite & Tailwind CSS</p>
+        <div className="pt-10 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-medium uppercase tracking-widest text-slate-500">
+          <p>© {currentYear} Buildora Research Group · SLIIT Malabe</p>
+          <div className="flex items-center gap-8">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <span className="text-slate-700">Built with React & Framer Motion</span>
+          </div>
         </div>
       </div>
     </footer>

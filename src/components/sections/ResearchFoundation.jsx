@@ -6,7 +6,7 @@ import {
   AlertTriangle, Target, FlaskConical,
   Eye, Truck, BarChart3, Layers, Lightbulb,
   TrendingDown, Smartphone, CheckCircle2,
-  DollarSign, Clock, Package
+  DollarSign, Clock, Package, Globe
 } from 'lucide-react';
 
 const fadeUp = {
@@ -66,10 +66,10 @@ const objectives = [
   { icon: Target,     color: "text-cyan-600",  num: "06", title: "Validation & Relevance",                   desc: "Validate the system's practical accuracy through experimental results and demonstrate relevance to improving efficiency in Sri Lankan construction." },
 ];
 
-function SectionLabel({ icon: Icon, color, label }) {
+function SectionLabel({ icon: Icon, color, label, iconColor }) {
   return (
-    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold uppercase tracking-widest ${color} border-current/30 bg-current/5 mb-4`}>
-      <Icon className="w-3.5 h-3.5" />
+    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest ${color} mb-6 shadow-sm`}>
+      <Icon className={`w-3.5 h-3.5 ${iconColor || ''}`} />
       {label}
     </div>
   );
@@ -80,17 +80,72 @@ export default function ResearchFoundation() {
     <section id="research" className="py-24 w-full bg-slate-50 overflow-hidden">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
 
+        {/* ── System Introduction (Abstract & Introduction) ── */}
+        <div className="mb-32">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid lg:grid-cols-2 gap-16 items-start">
+            
+            {/* Left Column: Abstract */}
+            <motion.div variants={fadeLeft}>
+              <SectionLabel 
+                icon={Lightbulb} 
+                color="text-amber-600 bg-amber-50 border-amber-200" 
+                label="Abstract" 
+              />
+              <h2 className="text-4xl font-extrabold text-slate-900 mb-8 tracking-tight">Executive Summary</h2>
+              <div className="space-y-6">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-amber-100 to-amber-50 rounded-2xl blur opacity-25" />
+                  <div className="relative bg-amber-50/60 border-l-4 border-amber-400 p-8 rounded-r-2xl">
+                    <p className="text-slate-800 leading-relaxed font-medium text-lg">
+                      Construction project management in small and medium-scale companies in Sri Lanka is commonly affected by cost overruns, schedule delays, and inaccurate material estimation due to reliance on manual practices.
+                    </p>
+                  </div>
+                </div>
+                <p className="text-slate-600 leading-relaxed text-lg pl-2">
+                  The system extracts structural elements from 2D plans using computer vision, predicts resource requirements using ML, estimates phase durations with XGBoost models, and assesses material quality using CNNs. Experimental results confirm that each module performs with practical accuracy, providing an accessible solution tailored for the Sri Lankan construction industry.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Introduction */}
+            <motion.div variants={fadeUp}>
+              <SectionLabel 
+                icon={Globe} 
+                color="text-blue-600 bg-blue-50 border-blue-200" 
+                label="Introduction" 
+              />
+              <h2 className="text-4xl font-extrabold text-slate-900 mb-8 tracking-tight">The Construction Challenge</h2>
+              <div className="text-slate-600 space-y-6 leading-relaxed">
+                <p className="text-lg">
+                  The construction industry plays a critical role in the economic development of Sri Lanka. However, middle-level and low-level construction companies continue to depend heavily on manual and paper-based methods for day-to-day project operations, including material estimation, cost planning, and site progress monitoring.
+                </p>
+                <p className="text-lg">
+                  These traditional approaches are time-consuming, prone to human error, and ill-suited for managing the complexity of modern construction projects. As a result, companies frequently experience cost overruns, schedule delays, and inefficient allocation of labor and materials. Recent advances in AI, computer vision, and machine learning have demonstrated strong potential for automating these tasks, but integrated systems remain scarce in South Asian markets.
+                </p>
+                <div className="pt-4">
+                  <p className="font-bold text-slate-900 text-xl leading-snug">
+                    Buildora presents a unified platform that supports construction planning, cost estimation, resource management, and on-site monitoring, providing a technology-driven alternative to conventional manual workflows.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+          </motion.div>
+        </div>
+
+        <Separator className="my-12 opacity-50" />
+
         {/* ── Literature Survey ── */}
         <div className="mb-24">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} className="mb-14 text-center">
             <motion.div variants={fadeUp} custom={0}>
               <SectionLabel icon={FlaskConical} color="text-purple-600" label="Literature Survey" />
             </motion.div>
-            <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight mb-5 text-slate-900">
-              What Research Tells Us
+            <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-slate-900">
+              Insights from Construction <span className="text-blue-600">Research</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              A structured review of <span className="text-slate-900 font-semibold">135 peer-reviewed articles (1985–2024)</span> shows AI is most prominent in the planning, monitoring, and control phases of construction.
+            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-500 leading-relaxed text-balance">
+              A comprehensive analysis of peer-reviewed literature reveals a shift toward AI-driven automation, yet a significant gap remains in unified, accessible mobile solutions for the local SME construction sector.
             </motion.p>
           </motion.div>
 
@@ -140,9 +195,9 @@ export default function ResearchFoundation() {
               <SectionLabel icon={AlertTriangle} color="text-orange-500" label="Research Gap" />
             </motion.div>
             <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-slate-900">
-              What's Missing in Existing Solutions
+              What's Missing in Existing <span className="text-blue-600">Solutions</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-600 max-w-3xl leading-relaxed">
+            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-500 leading-relaxed text-balance">
               Despite rapid AI growth in construction globally, critical gaps persist that Buildora directly addresses.
             </motion.p>
           </motion.div>
@@ -172,9 +227,9 @@ export default function ResearchFoundation() {
               <SectionLabel icon={TrendingDown} color="text-red-500" label="Research Problem" />
             </motion.div>
             <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-4xl font-bold tracking-tight mb-5 text-slate-900">
-              The Pain Points We Address
+              The Pain Points We <span className="text-blue-600">Address</span>
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-500 leading-relaxed text-balance">
               Sri Lankan small and medium-scale construction companies heavily depend on manual and paper-based methods.
             </motion.p>
           </motion.div>

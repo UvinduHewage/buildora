@@ -1,143 +1,161 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Sparkles } from 'lucide-react';
+import { FileText, Zap, ChevronRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-zinc-950 text-white flex flex-col items-center justify-center relative w-full overflow-hidden">
-
-      {/* Animated background orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.08, 0.15, 0.08] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"
-        />
-        {/* Grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      </div>
-
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="text-center pt-16 md:pt-20">
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 bg-zinc-900 border border-yellow-400/30 rounded-full px-6 py-2.5 text-sm mb-10 text-yellow-200"
-          >
-            <Sparkles className="w-4 h-4 text-yellow-400" />
-            SLIIT • Faculty of Computing • Group 25-26J-168
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-4 leading-none"
-          >
-            Buildora
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-8 max-w-5xl mx-auto text-zinc-200"
-          >
-            Intelligent Construction<br className="hidden md:block" /> Project Management
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="max-w-3xl mx-auto text-xl md:text-2xl text-zinc-400 mb-14 leading-relaxed"
-          >
-            AI-powered platform with four integrated modules to transform construction planning,
-            estimation, and management for small and medium projects in Sri Lanka.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-20"
-          >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-              <Button
-                size="lg"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg font-bold px-12 py-7 rounded-full shadow-2xl shadow-yellow-400/30 w-full sm:w-auto"
-                onClick={() => document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' })}
+    <section className="relative min-h-[90vh] bg-white pt-20 pb-32 overflow-hidden flex items-center">
+      
+      {/* Subtle Background Accents */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 -skew-x-12 translate-x-1/4 pointer-events-none" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          
+          {/* Left Content Column */}
+          <div className="flex-1 text-left">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-start mb-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-[2px] w-8 bg-blue-600" />
+                <span className="text-sm font-bold uppercase tracking-widest text-blue-600">
+                  Research & Innovation
+                </span>
+              </div>
+              
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-6"
               >
-                Explore Research
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white hover:text-black text-lg font-bold px-12 py-7 rounded-full w-full sm:w-auto transition-all"
-                asChild
+                Intelligent Construction <br />
+                <span className="text-blue-600">Management Platform</span>
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed mb-10"
               >
-                <a href="#documents">View Documents</a>
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-20"
-          >
-            {[
-              { value: "4",      label: "AI Modules" },
-              { value: "0.9531", label: "R² Score" },
-              { value: "135+",   label: "Papers Reviewed" },
-              { value: "7",      label: "Months" },
-            ].map((stat, i) => (
+                Buildora is an AI-powered ecosystem designed to transform project 
+                lifecycles in Sri Lanka. From automated BOQ generation to real-time 
+                quality assessment, we eliminate manual errors and optimize efficiency.
+              </motion.p>
+              
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.65 + i * 0.08 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
               >
-                <p className="text-3xl font-black text-yellow-400 mb-1">{stat.value}</p>
-                <p className="text-sm text-zinc-400">{stat.label}</p>
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-7 rounded-xl shadow-lg shadow-blue-600/20 group transition-all"
+                  onClick={() => document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Explore Research
+                  <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-semibold px-8 py-7 rounded-xl transition-all"
+                >
+                  <a href="#documents" className="flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    View Full Documents
+                  </a>
+                </Button>
               </motion.div>
-            ))}
-          </motion.div>
+              
+              {/* Trust Badge/Simple Link */}
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="mt-8 text-sm text-slate-400 flex items-center gap-2"
+              >
+              </motion.p>
+            </motion.div>
+          </div>
+          
+          {/* Right Image Column */}
+          <div className="flex-1 w-full lg:w-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative"
+            >
+              {/* Background Decorative Shape */}
+              <div className="absolute -inset-4 bg-blue-600/5 rounded-[2.5rem] -rotate-3 scale-105 pointer-events-none" />
+              
+              <div className="relative bg-white p-4 rounded-[2rem] shadow-2xl shadow-blue-900/10 border border-slate-100 overflow-hidden group">
+                <img 
+                  src="/hero-construction.png" 
+                  alt="Buildora Platform Visualization" 
+                  className="w-full h-auto rounded-[1.5rem] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* Floating UI Element for "Advanced" feel */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute bottom-8 right-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 max-w-[180px]"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">AI Analysis Live</span>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <motion.div 
+                        animate={{ width: ["30%", "85%", "60%"] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                        className="h-full bg-blue-500"
+                      />
+                    </div>
+                    <div className="h-1.5 w-3/4 bg-slate-100 rounded-full" />
+                  </div>
+                </motion.div>
+              </div>
+              
+              {/* Decorative Icons */}
+              <div className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-lg border border-slate-50 animate-bounce-slow">
+                <Zap className="w-6 h-6 text-yellow-500" />
+              </div>
+            </motion.div>
+          </div>
+          
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500"
-      >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}>
-          <ArrowDown className="w-5 h-5" />
-        </motion.div>
-        <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
-      </motion.div>
+      
+      {/* Bottom Stats Row - Clean version */}
+      <div className="absolute bottom-0 left-0 w-full bg-slate-50/80 border-t border-slate-100 py-8">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4">
+          {[
+            { value: "4", label: "Core Modules" },
+            { value: "95%+", label: "Model Accuracy" },
+            { value: "135+", label: "Research Citations" },
+            { value: "Elite", label: "Group Status" },
+          ].map((stat, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <span className="text-2xl font-black text-slate-900">{stat.value}</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
     </section>
   );
 }

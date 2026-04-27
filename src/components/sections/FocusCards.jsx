@@ -67,14 +67,13 @@ export default function FocusCards() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5">
-            The Problem We're Solving
+          <motion.h2 variants={fadeUp} custom={1} className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+            Features of the <span className="text-blue-600">System</span>
           </motion.h2>
-          <motion.p variants={fadeUp} custom={2} className="text-lg text-slate-500 max-w-3xl mx-auto leading-relaxed">
-            Sri Lanka's small and medium-scale construction industry is held back by fragmented, manual processes.
-            Buildora brings four AI-powered modules into one unified mobile platform.
+          <motion.p variants={fadeUp} custom={2} className="text-xl text-slate-500 leading-relaxed text-balance">
+            Buildora integrates four powerful AI-driven modules into a unified platform to revolutionize every stage of the construction lifecycle.
           </motion.p>
         </motion.div>
 

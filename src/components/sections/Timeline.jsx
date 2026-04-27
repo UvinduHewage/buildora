@@ -1,109 +1,63 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock } from 'lucide-react';
+import { CheckCircle2, Clock } from 'lucide-react';
 
 const milestones = [
   {
-    date: "16th May 2025",
-    title: "Form Project Group",
-    desc: "Initial step where students form their research groups and define core team roles.",
-    status: "Completed",
-  },
-  {
-    date: "26th May 2025",
-    title: "Research Topic & Supervisor",
-    desc: "Identification of a research gap and securing a supervisor for project guidance.",
-    status: "Completed",
-  },
-  {
-    date: "27th June 2025",
-    title: "TAF Submission",
-    desc: "Deadline for submitting the Topic Assessment Form (TAF) for approval.",
-    status: "Completed",
-  },
-  {
-    date: "30th June – 16th July 2025",
-    title: "TAF Assessment",
-    desc: "Review and assessment of the TAF by the supervisor and co-supervisor.",
-    status: "Completed",
-  },
-  {
-    date: "23rd July 2025",
-    title: "Charter Submission",
-    desc: "Submission of the project charter outlining scope, objectives, and timeline.",
-    status: "Completed",
-  },
-  {
-    date: "15th August 2025",
-    title: "Proposal Report (Draft)",
-    desc: "Submission of the initial draft of the research proposal report.",
-    status: "Completed",
-  },
-  {
-    date: "08th – 12th September 2025",
-    title: "Proposal Presentation",
-    desc: "Formal presentation of the research proposal to the evaluation panel.",
-    status: "Completed",
-  },
-  {
-    date: "05th – 09th January 2026",
-    title: "Progress Presentation I",
-    desc: "First major progress review to assess development and initial project findings.",
-    status: "Completed",
-  },
-  {
-    date: "09th – 12th March 2026",
-    title: "Progress Presentation II",
-    desc: "Second progress review focusing on implementation details and preliminary results.",
-    status: "Completed",
-  },
-  {
     date: "26th April 2026",
     title: "Draft Thesis Submission",
-    desc: "Submission of the complete draft thesis document for final supervisor review.",
+    desc: "Submission of the complete draft thesis document for supervisor review and feedback.",
+    marks: "N/A",
     status: "Completed",
   },
   {
     date: "26th April 2026",
     title: "Website Submission",
-    desc: "Project website submission showcasing all modules, findings, and documentation.",
+    desc: "Research project website submitted for evaluation — showcasing all modules, findings, and documentation.",
+    marks: "N/A",
     status: "Completed",
   },
   {
     date: "27th Apr – 06th May 2026",
-    title: "Final Presentation & Viva",
-    desc: "Comprehensive project defence and viva presentation to the evaluation panel.",
-    status: "Upcoming",
-  },
-  {
-    date: "27th Apr – 06th May 2026",
-    title: "Evaluation & Logbook",
-    desc: "Panel evaluation of the website and submission of the project logbook.",
-    status: "Upcoming",
+    title: "Final Presentation and Viva",
+    desc: "Final project defence and viva presentation to the evaluation panel. ISE and IM students on 27th & 28th April.",
+    marks: "N/A",
+    status: "Completed",
   },
   {
     date: "30th April 2026",
     title: "Final Checklist Submission",
-    desc: "Submission of the final checklist confirming all project deliverables are in order.",
-    status: "Upcoming",
+    desc: "Submission of the completed final checklist confirming all project deliverables are in order.",
+    marks: "N/A",
+    status: "Completed",
+  },
+  {
+    date: "27th Apr – 06th May 2026",
+    title: "Website Evaluation & Logbook Submission",
+    desc: "Website evaluation by the panel alongside submission of the project logbook tracking progress.",
+    marks: "N/A",
+    status: "Completed",
   },
   {
     date: "08th May 2026",
     title: "Research Paper Submission",
-    desc: "Final submission of the research paper detailing methodology and results.",
-    status: "Upcoming",
+    desc: "Submission of the final research paper detailing methodology, findings, and conclusions.",
+    marks: "N/A",
+    status: "Completed",
   },
   {
     date: "13th May 2026",
     title: "Final Thesis Submission",
-    desc: "Submission of the final, bound research thesis incorporating all feedback.",
-    status: "Upcoming",
+    desc: "Submission of the comprehensive, corrected final thesis document.",
+    marks: "N/A",
+    status: "Completed",
   },
   {
     date: "15th June 2026",
-    title: "Publication Evidence",
-    desc: "Evidence submission of paper acceptance or publication in a journal/conference.",
+    title: "Research Paper Publication Evidence",
+    desc: "Submission of evidence confirming research paper publication or acceptance in a journal/conference.",
+    marks: "N/A",
     status: "Upcoming",
   },
 ];
@@ -125,10 +79,10 @@ export default function Timeline() {
             <Clock className="w-3.5 h-3.5" />
             2025 July Batch — RP Project
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Research Milestones
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+            Research <span className="text-blue-600">Milestones</span>
           </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-500 text-balance">
             Track the progress of our research project through key assessment points and deliverables.
           </p>
         </motion.div>
@@ -151,20 +105,20 @@ export default function Timeline() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.35 }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="relative flex flex-col md:flex-row items-center"
+                  className="relative flex flex-col md:flex-row items-center md:justify-between"
                 >
                   {/* ── LEFT SIDE ── */}
-                  <div className={`w-full md:w-[calc(50%-2rem)] flex md:justify-end md:pr-8 mb-4 md:mb-0 ${isRight ? 'hidden md:flex' : 'flex'}`}>
+                  <div className="w-full md:w-[calc(50%-2rem)] flex md:justify-end md:pr-8 mb-4 md:mb-0">
                     {isRight ? (
-                      /* date label (Desktop only) */
-                      <div className="text-right">
+                      /* date label */
+                      <div className="text-right hidden md:block">
                         <p className="text-blue-600 font-bold text-sm">{item.date}</p>
-                        <Badge className={`mt-1 ${isCompleted ? 'bg-slate-900 hover:bg-slate-800' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
+                        <Badge className={`mt-1 ${isCompleted ? 'bg-green-600 hover:bg-green-600' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
                           {item.status}
                         </Badge>
                       </div>
                     ) : (
-                      /* card (Both) */
+                      /* card */
                       <Card className="w-full shadow-sm border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
                         <CardContent className="p-6">
                           <h3 className="text-lg font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition-colors">
@@ -174,7 +128,7 @@ export default function Timeline() {
                           {/* Mobile date */}
                           <div className="flex items-center justify-between mt-4 md:hidden">
                             <p className="text-blue-600 font-semibold text-xs">{item.date}</p>
-                            <Badge className={`${isCompleted ? 'bg-slate-900' : 'bg-amber-500'} text-white text-xs`}>
+                            <Badge className={`${isCompleted ? 'bg-green-600' : 'bg-amber-500'} text-white text-xs`}>
                               {item.status}
                             </Badge>
                           </div>
@@ -189,9 +143,9 @@ export default function Timeline() {
                   </div>
 
                   {/* ── RIGHT SIDE ── */}
-                  <div className={`w-full md:w-[calc(50%-2rem)] flex md:justify-start md:pl-8 ${isRight ? 'flex' : 'hidden md:flex'}`}>
+                  <div className="w-full md:w-[calc(50%-2rem)] flex md:justify-start md:pl-8">
                     {isRight ? (
-                      /* card (Both) */
+                      /* card */
                       <Card className="w-full shadow-sm border-slate-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
                         <CardContent className="p-6">
                           <h3 className="text-lg font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition-colors">
@@ -201,17 +155,17 @@ export default function Timeline() {
                           {/* Mobile date */}
                           <div className="flex items-center justify-between mt-4 md:hidden">
                             <p className="text-blue-600 font-semibold text-xs">{item.date}</p>
-                            <Badge className={`${isCompleted ? 'bg-slate-900' : 'bg-amber-500'} text-white text-xs`}>
+                            <Badge className={`${isCompleted ? 'bg-green-600' : 'bg-amber-500'} text-white text-xs`}>
                               {item.status}
                             </Badge>
                           </div>
                         </CardContent>
                       </Card>
                     ) : (
-                      /* date label (Desktop only) */
-                      <div className="text-left">
+                      /* date label */
+                      <div className="text-left hidden md:block">
                         <p className="text-blue-600 font-bold text-sm">{item.date}</p>
-                        <Badge className={`mt-1 ${isCompleted ? 'bg-slate-900 hover:bg-slate-800' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
+                        <Badge className={`mt-1 ${isCompleted ? 'bg-green-600 hover:bg-green-600' : 'bg-amber-500 hover:bg-amber-600'} text-white text-xs`}>
                           {item.status}
                         </Badge>
                       </div>
