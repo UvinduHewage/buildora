@@ -8,8 +8,8 @@ const navLinks = [
   { name: "Timeline", href: "#timeline" },
   { name: "Project Documents", href: "#documents" },
   { name: "Presentations", href: "#presentations" },
-  { name: "Research Team", href: "#team" },
-  { name: "About Us", href: "#contact" },
+  { name: "About Us 1", href: "#team" },
+  { name: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
