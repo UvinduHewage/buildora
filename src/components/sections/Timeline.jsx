@@ -51,7 +51,7 @@ const milestones = [
     title: "Final Thesis Submission",
     desc: "Submission of the comprehensive, corrected final thesis document.",
     marks: "N/A",
-    status: "Completed",
+    status: "Upcoming",
   },
   {
     date: "15th June 2026",
