@@ -33,14 +33,44 @@ const contacts = [
     linkLabel: "chathurya.k@sliit.lk",
   },
   {
-    icon: MapPin,
-    color: "text-blue-500",
-    bg: "bg-blue-50 border-blue-100",
-    title: "Location",
-    name: "SLIIT — Faculty of Computing",
-    sub: "Malabe, Sri Lanka",
-    link: "https://maps.google.com",
-    linkLabel: "View on Maps",
+    icon: Mail,
+    color: "text-emerald-600",
+    bg: "bg-emerald-50 border-emerald-100",
+    title: "Team Member",
+    name: "Vithana D.T.M.",
+    sub: "Module 01 · Material Recommendation",
+    link: "mailto:dtm.vithana@gmail.com",
+    linkLabel: "dtm.vithana@gmail.com",
+  },
+  {
+    icon: Mail,
+    color: "text-purple-600",
+    bg: "bg-purple-50 border-purple-100",
+    title: "Team Member",
+    name: "Madhushan S.M.P.B.",
+    sub: "Module 03 · Building Plan Analysis",
+    link: "mailto:bawanthamadushan18@gmail.com",
+    linkLabel: "bawanthamadushan18@gmail.com",
+  },
+  {
+    icon: Mail,
+    color: "text-cyan-600",
+    bg: "bg-cyan-50 border-cyan-100",
+    title: "Team Member",
+    name: "Jayashani V.P.N.",
+    sub: "Module 02 · Cost & Progress Tracking",
+    link: "mailto:nuwanthivpathirana@gmail.com",
+    linkLabel: "nuwanthivpathirana@gmail.com",
+  },
+  {
+    icon: Mail,
+    color: "text-amber-600",
+    bg: "bg-amber-50 border-amber-100",
+    title: "Team Member",
+    name: "U.U.M. Hewage",
+    sub: "Module 04 · Smart Logistics",
+    link: "mailto:hewageuvindu@gmail.com",
+    linkLabel: "hewageuvindu@gmail.com",
   },
 ];
 
@@ -63,29 +93,65 @@ export default function Contact() {
           </motion.p>
         </motion.div>
 
-        {/* Contact cards */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid md:grid-cols-3 gap-8 mb-24 w-full">
-          {contacts.map((c, i) => (
-            <motion.div key={c.title} variants={fadeUp} custom={i} whileHover={{ y: -8 }} transition={{ type: "spring", stiffness: 300 }}>
-              <Card className="border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-600/5 transition-all duration-500 group h-full bg-white rounded-[2rem]">
-                <CardContent className="p-10 flex flex-col gap-6 h-full">
-                  <div className={`w-16 h-16 rounded-[1.25rem] border flex items-center justify-center ${c.bg} group-hover:scale-110 transition-transform duration-500`}>
-                    <c.icon className={`w-8 h-8 ${c.color}`} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2 font-black">{c.title}</p>
-                    <p className="font-extrabold text-slate-900 text-xl tracking-tight">{c.name}</p>
-                    <p className="text-sm font-medium text-slate-500 mt-1">{c.sub}</p>
-                  </div>
-                  <a href={c.link} target="_blank" rel="noopener noreferrer"
-                     className={`text-sm font-bold ${c.color} hover:underline underline-offset-8 transition-all flex items-center gap-2 group/link`}>
-                    {c.linkLabel}
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </a>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        {/* Contact cards - Clean Grid Layout */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="mb-24 w-full">
+          {/* Supervisors Section */}
+          <div className="mb-10">
+            <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Supervisors</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {contacts.slice(0, 2).map((c, i) => (
+                <motion.div key={c.title} variants={fadeUp} custom={i} whileHover={{ y: -8 }}>
+                  <Card className="relative border-2 border-slate-200 hover:shadow-xl transition-all duration-500 group h-full bg-white rounded-2xl overflow-hidden">
+                    <div className={`h-1.5 w-full ${i === 0 ? 'bg-blue-500' : 'bg-indigo-500'}`} />
+                    <CardContent className="p-8 md:p-10 flex flex-col gap-8">
+                      <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${c.bg} group-hover:scale-110 transition-transform duration-500`}>
+                        <c.icon className={`w-8 h-8 ${c.color}`} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-2">{c.title}</p>
+                        <p className="font-bold text-slate-900 text-2xl mb-1">{c.name}</p>
+                        <p className="text-sm text-slate-600">{c.sub}</p>
+                      </div>
+                      <a href={c.link} target="_blank" rel="noopener noreferrer"
+                         className={`text-sm font-bold ${c.color} hover:underline flex items-center gap-2 group/link`}>
+                        {c.linkLabel}
+                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Team Members Section */}
+          <div>
+            <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Team Members</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {contacts.slice(2).map((c, i) => (
+                <motion.div key={c.title} variants={fadeUp} custom={i + 2} whileHover={{ y: -4 }}>
+                  <Card className="relative border border-slate-200 hover:border-slate-400 hover:shadow-lg transition-all duration-500 group h-full bg-white rounded-xl overflow-hidden">
+                    <div className={`h-1 w-full ${c.bg}`} />
+                    <CardContent className="p-5 md:p-6 flex flex-col gap-5">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${c.bg} group-hover:scale-110 transition-transform duration-500`}>
+                        <c.icon className={`w-6 h-6 ${c.color}`} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-1.5">{c.title}</p>
+                        <p className="font-bold text-slate-900 text-base">{c.name}</p>
+                        <p className="text-xs text-slate-600 mt-1.5 leading-snug">{c.sub}</p>
+                      </div>
+                      <a href={c.link} target="_blank" rel="noopener noreferrer"
+                         className={`text-xs font-bold ${c.color} hover:underline flex items-center gap-1 group/link`}>
+                        {c.linkLabel.split('@')[0]}@
+                        <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* CTA banner */}
@@ -103,21 +169,6 @@ export default function Contact() {
               <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
                 Join us in revolutionizing the construction industry with intelligent, data-driven solutions designed for tomorrow.
               </p>
-              
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-5 w-full sm:w-auto">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold px-10 py-7 rounded-2xl text-base shadow-xl shadow-blue-600/20 transition-all">
-                    <Mail className="w-5 h-5 mr-3" />
-                    Contact Team
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" variant="outline" className="w-full border-slate-700 bg-slate-800/40 hover:bg-slate-800 text-white hover:text-white px-10 py-7 rounded-2xl text-base backdrop-blur-md transition-all">
-                    <GitBranch className="w-5 h-5 mr-3" />
-                    GitHub Repo
-                  </Button>
-                </motion.div>
-              </div>
             </div>
           </div>
         </motion.div>

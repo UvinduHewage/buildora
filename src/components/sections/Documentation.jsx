@@ -51,12 +51,12 @@ const categories = [
     bg: "bg-emerald-50",
     title: "Final Reports",
     subtitle: "Individual final reports for each team member",
-    files: members.map(m => ({
-      name: `Final Report — ${m.short}`,
-      size: "4.2 MB",
-      preview: "#",
-      download: "#",
-    })),
+    files: [
+      { name: "Final Report — Vithana D T M", size: "4.2 MB", preview: "https://drive.google.com/file/d/1rRpfIQADS_unV6VYM18GVB5kaB3iteyW/preview", download: "https://drive.google.com/file/d/1rRpfIQADS_unV6VYM18GVB5kaB3iteyW/view?usp=sharing" },
+      { name: "Final Report — Madhushan S M P B", size: "4.2 MB", preview: "https://drive.google.com/file/d/1CYvHDevcivjf0JAa0eMtiT40CSXitAvX/preview", download: "https://drive.google.com/file/d/1CYvHDevcivjf0JAa0eMtiT40CSXitAvX/view?usp=sharing" },
+      { name: "Final Report — Jayashani V P N", size: "4.2 MB", preview: "https://drive.google.com/file/d/18BkEK-OmG7bpNtBB4HnkyP9FnH4WRigJ/preview", download: "https://drive.google.com/file/d/18BkEK-OmG7bpNtBB4HnkyP9FnH4WRigJ/view?usp=sharing" },
+      { name: "Final Report — Hewage U U M", size: "4.2 MB", preview: "https://drive.google.com/file/d/1rFXHcdmbkYsSgkMiMFnPlhpeFXIHN6ht/preview", download: "https://drive.google.com/file/d/1rFXHcdmbkYsSgkMiMFnPlhpeFXIHN6ht/view?usp=sharing" },
+    ],
   },
   {
     icon: FolderOpen,
