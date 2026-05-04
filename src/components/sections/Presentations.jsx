@@ -16,8 +16,6 @@ const presentations = [
   {
     title: "Proposal Presentation",
     date: "March 15, 2025",
-    slides: "25 slides",
-    duration: "20 minutes",
     desc: "Initial project proposal and research methodology overview.",
     status: "Completed",
     link: "https://drive.google.com/file/d/1V-wwOA5NpKMHNt_6LbPpIbvLmugWKwLm/view?usp=sharing",
@@ -25,8 +23,6 @@ const presentations = [
   {
     title: "Progress Presentation 1",
     date: "April 20, 2025",
-    slides: "30 slides",
-    duration: "25 minutes",
     desc: "Literature review findings and preliminary data collection.",
     status: "Completed",
     link: "https://drive.google.com/file/d/1tH3kXSFZHQblJ2B5u3BDqZkevEWv97YN/view?usp=sharing",
@@ -34,8 +30,6 @@ const presentations = [
   {
     title: "Progress Presentation 2",
     date: "May 25, 2025",
-    slides: "35 slides",
-    duration: "30 minutes",
     desc: "Data analysis results and initial findings discussion.",
     status: "Completed",
     link: "https://drive.google.com/file/d/1wlfZxJIx-RGqJiSEaMr_fFL_NBzLGPKM/view?usp=sharing",
@@ -43,8 +37,6 @@ const presentations = [
   {
     title: "Final Presentation",
     date: "June 30, 2025",
-    slides: "40 slides",
-    duration: "35 minutes",
     desc: "Complete research findings, conclusions, and recommendations.",
     status: "Completed",
     link: "#",
@@ -130,9 +122,6 @@ export default function Presentations() {
                       </h3>
                       <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
                         <span>{pres.date}</span>
-                        <span>·</span>
-                        <span>{pres.slides}</span>
-                        <span>·</span>
                         <Clock className="w-3 h-3" />
                         <span>{pres.duration}</span>
                       </div>
