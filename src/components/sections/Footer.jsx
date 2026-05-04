@@ -27,13 +27,6 @@ export default function Footer() {
               Revolutionizing the construction lifecycle through integrated AI, Computer Vision, 
               and data-driven intelligence for the local SME sector.
             </p>
-            <div className="flex items-center gap-4">
-              {[GitBranch, Globe, Mail].map((Icon, i) => (
-                <button key={i} className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all duration-300">
-                  <Icon className="w-5 h-5" />
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Platform Links */}

@@ -34,6 +34,16 @@ const contacts = [
   },
   {
     icon: Mail,
+    color: "text-rose-600",
+    bg: "bg-rose-50 border-rose-100",
+    title: "Team Contact",
+    name: "Buildora Research Team",
+    sub: "General inquiries and collaboration",
+    link: "mailto:buildoraicmp@gmail.com",
+    linkLabel: "buildoraicmp@gmail.com",
+  },
+  {
+    icon: Mail,
     color: "text-emerald-600",
     bg: "bg-emerald-50 border-emerald-100",
     title: "Team Member",
@@ -41,6 +51,7 @@ const contacts = [
     sub: "Module 01 · Material Recommendation",
     link: "mailto:dtm.vithana@gmail.com",
     linkLabel: "dtm.vithana@gmail.com",
+    phone: "+94 77 437 6121",
   },
   {
     icon: Mail,
@@ -51,6 +62,7 @@ const contacts = [
     sub: "Module 03 · Building Plan Analysis",
     link: "mailto:bawanthamadushan18@gmail.com",
     linkLabel: "bawanthamadushan18@gmail.com",
+    phone: "+94 78 623 4514",
   },
   {
     icon: Mail,
@@ -61,6 +73,7 @@ const contacts = [
     sub: "Module 02 · Cost & Progress Tracking",
     link: "mailto:nuwanthivpathirana@gmail.com",
     linkLabel: "nuwanthivpathirana@gmail.com",
+    phone: "+94 70 139 8090",
   },
   {
     icon: Mail,
@@ -71,6 +84,7 @@ const contacts = [
     sub: "Module 04 · Smart Logistics",
     link: "mailto:hewageuvindu@gmail.com",
     linkLabel: "hewageuvindu@gmail.com",
+    phone: "+94 71 945 6781",
   },
 ];
 
@@ -97,12 +111,12 @@ export default function Contact() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="mb-24 w-full">
           {/* Supervisors Section */}
           <div className="mb-10">
-            <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Supervisors</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {contacts.slice(0, 2).map((c, i) => (
+            <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Supervisors & Team Contact</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {contacts.slice(0, 3).map((c, i) => (
                 <motion.div key={c.title} variants={fadeUp} custom={i} whileHover={{ y: -8 }}>
                   <Card className="relative border-2 border-slate-200 hover:shadow-xl transition-all duration-500 group h-full bg-white rounded-2xl overflow-hidden">
-                    <div className={`h-1.5 w-full ${i === 0 ? 'bg-blue-500' : 'bg-indigo-500'}`} />
+                    <div className={`h-1.5 w-full ${i === 0 ? 'bg-blue-500' : i === 1 ? 'bg-indigo-500' : 'bg-rose-500'}`} />
                     <CardContent className="p-8 md:p-10 flex flex-col gap-8">
                       <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${c.bg} group-hover:scale-110 transition-transform duration-500`}>
                         <c.icon className={`w-8 h-8 ${c.color}`} />
@@ -128,11 +142,11 @@ export default function Contact() {
           <div>
             <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Team Members</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {contacts.slice(2).map((c, i) => (
-                <motion.div key={c.title} variants={fadeUp} custom={i + 2} whileHover={{ y: -4 }}>
+              {contacts.slice(3).map((c, i) => (
+                <motion.div key={c.title} variants={fadeUp} custom={i + 3} whileHover={{ y: -4 }}>
                   <Card className="relative border border-slate-200 hover:border-slate-400 hover:shadow-lg transition-all duration-500 group h-full bg-white rounded-xl overflow-hidden">
                     <div className={`h-1 w-full ${c.bg}`} />
-                    <CardContent className="p-5 md:p-6 flex flex-col gap-5">
+                    <CardContent className="p-5 md:p-6 flex flex-col gap-4">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${c.bg} group-hover:scale-110 transition-transform duration-500`}>
                         <c.icon className={`w-6 h-6 ${c.color}`} />
                       </div>
@@ -141,11 +155,20 @@ export default function Contact() {
                         <p className="font-bold text-slate-900 text-base">{c.name}</p>
                         <p className="text-xs text-slate-600 mt-1.5 leading-snug">{c.sub}</p>
                       </div>
-                      <a href={c.link} target="_blank" rel="noopener noreferrer"
-                         className={`text-xs font-bold ${c.color} hover:underline flex items-center gap-1 group/link`}>
-                        {c.linkLabel.split('@')[0]}@
-                        <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
-                      </a>
+                      <div className="space-y-2 pt-1">
+                        <a href={c.link} target="_blank" rel="noopener noreferrer"
+                           className={`text-xs font-bold ${c.color} hover:underline flex items-center gap-1 group/link`}>
+                          {c.linkLabel.split('@')[0]}@
+                          <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+                        </a>
+                        {c.phone && (
+                          <a href={`tel:${c.phone.replace(/\s+/g, '')}`}
+                             className={`text-xs font-bold ${c.color} hover:underline flex items-center gap-1 group/link`}>
+                            {c.phone}
+                            <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
+                          </a>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
