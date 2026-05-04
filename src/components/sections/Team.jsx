@@ -14,8 +14,8 @@ const fadeUp = {
 
 const team = [
   { id: "IT22150998", name: "Vithana D.T.M.",      role: "Material Recommendation & Wood Quality",  module: "Module 01", color: "text-emerald-500", bg: "bg-emerald-500", badge: "bg-emerald-50 text-emerald-600 border-emerald-200", img: "/team/vithana.jpg" },
-  { id: "IT22172532", name: "Madhushan S.M.P.B.",  role: "Building Plan Analysis & 3D",             module: "Module 03", color: "text-purple-500",  bg: "bg-purple-500",  badge: "bg-purple-50 text-purple-600 border-purple-200", img: "https://drive.google.com/file/d/17Sx5P317HH0pSpD4Fz3zEyP9-lw_EeRo/view?usp=sharing" },
-  { id: "IT22574718", name: "Jayashani V.P.N.",    role: "Cost, Time & Progress Tracking",          module: "Module 02", color: "text-blue-500",    bg: "bg-blue-500",    badge: "bg-blue-50 text-blue-600 border-blue-200", img: "/team/jayashani.jpg"         },
+  { id: "IT22172532", name: "Madhushan S.M.P.B.",  role: "Building Plan Analysis & 3D",             module: "Module 03", color: "text-purple-500",  bg: "bg-purple-500",  badge: "bg-purple-50 text-purple-600 border-purple-200", img: "/team/Bawantha.jpg" },
+  { id: "IT22574718", name: "Jayashani V.P.N.",    role: "Cost, Time & Progress Tracking",          module: "Module 02", color: "text-blue-500",    bg: "bg-blue-500",    badge: "bg-blue-50 text-blue-600 border-blue-200", img: "/team/jayashani.jpg" },
   { id: "IT22196460", name: "U.U.M. Hewage",       role: "Smart Logistics & System Integration",    module: "Module 04", color: "text-amber-500",   bg: "bg-amber-500",   badge: "bg-amber-50 text-amber-600 border-amber-200", img: "/team/hewage.jpg"   },
 ];
 
