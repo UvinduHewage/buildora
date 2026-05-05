@@ -14,6 +14,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const scrollToSection = (href) => {
     const id = href.replace('#', '');
@@ -24,6 +25,23 @@ export default function Navbar() {
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
     setOpen(false);
+  };
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    if (query.trim() === '') return;
+
+    // Search through nav links and navigate to matching section
+    const matchedLink = navLinks.find(link => 
+      link.name.toLowerCase().includes(query)
+    );
+
+    if (matchedLink) {
+      scrollToSection(matchedLink.href);
+      setSearchQuery('');
+    }
   };
 
   return (
@@ -61,6 +79,8 @@ export default function Navbar() {
             <input 
               type="text" 
               placeholder="Search..." 
+              value={searchQuery}
+              onChange={handleSearch}
               className="bg-transparent border-none outline-none text-sm w-24 focus:w-48 transition-all duration-300 text-slate-700 placeholder:text-slate-400 font-medium"
             />
           </div>
