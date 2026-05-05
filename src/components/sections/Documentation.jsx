@@ -65,7 +65,7 @@ const categories = [
     title: "Research Paper",
     subtitle: "Complete research paper with methodology, findings, and conclusions",
     files: [
-      { name: "Research Paper", size: "7.2 MB", preview: "https://drive.google.com/file/d/1GMKIrFX8sVdNaGEITJyzo7FoyiKIq1D4/preview", download: "https://drive.google.com/file/d/1GMKIrFX8sVdNaGEITJyzo7FoyiKIq1D4/view?usp=sharing" },
+      { name: "Research Paper", size: "7.2 MB", preview: "https://drive.google.com/file/d/1wmDmxDQNbOeQtKeBJMsvFKyetNl5ZeFA/preview", download: "https://drive.google.com/file/d/1wmDmxDQNbOeQtKeBJMsvFKyetNl5ZeFA/view?usp=sharing" },
     ],
   },
 ];
