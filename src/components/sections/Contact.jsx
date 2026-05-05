@@ -177,6 +177,64 @@ export default function Contact() {
           </div>
         </motion.div>
 
+        {/* References Section */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} custom={0} className="mt-24 md:mt-32 py-16 md:py-24 border-t border-slate-200">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">References</h2>
+            <div className="space-y-4 text-slate-700 leading-relaxed text-sm md:text-base">
+              <p><span className="font-semibold">[1]</span> Z. Zeng, X. Li, Y. K. Yu, and C.-W. Fu, "Deep floor plan recognition using a multi-task network with room-boundary-guided attention," in Proc. IEEE/CVF Int. Conf. Comput. Vision (ICCV), Seoul, South Korea, 2019, pp. 9096–9104.</p>
+              
+              <p><span className="font-semibold">[2]</span> A. Rezvanifar, M. Cartwright, and U. Bhatt, "Symbol spotting on digital architectural floor plans using a deep learning-based framework," in Proc. IEEE/CVF Conf. Comput. Vision Pattern Recognit. Workshops (CVPRW), Seattle, WA, USA, 2020, pp. 626–627.</p>
+              
+              <p><span className="font-semibold">[3]</span> M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi, "Automated system for high-accuracy quantity takeoff using BIM," Autom. Constr., vol. 155, p. 105054, Nov. 2023.</p>
+              
+              <p><span className="font-semibold">[4]</span> W. Wang, H. Li, and X. Wang, "Construction duration prediction using machine learning: A case study," Automation in Construction, vol. 127, p. 103705, 2021.</p>
+              
+              <p><span className="font-semibold">[5]</span> T. Czerniawski and F. Leite, "Automated digital modeling of existing buildings: A review of visual object recognition methods," Autom. Constr., vol. 113, p. 103131, 2020.</p>
+              
+              <p><span className="font-semibold">[6]</span> A. Braun and A. Borrmann, "Combining inverse photogrammetry and BIM for automated labeling of construction site images for machine learning," Autom. Constr., vol. 106, p. 102879, 2019.</p>
+              
+              <p><span className="font-semibold">[7]</span> D. Liciotti, M. Paolanti, R. Pietrini, E. Frontoni, and P. Zingaretti, "Automatic floor plan analysis and recognition," Autom. Constr., vol. 140, p. 104348, 2022.</p>
+              
+              <p><span className="font-semibold">[8]</span> W. S. D. Perera, K. A. T. O. Ranadewa, A. Parameswaran, and D. Weerasooriya, "Status quo of digitalisation in the Sri Lankan construction industry," in Proc. 11th World Construction Symposium, Sri Lanka, 2023, pp. 944–959.</p>
+              
+              <p><span className="font-semibold">[9]</span> I. N. Vod and N. Kawmudi, "Investigating the challenges of software adoption among quantity surveyors in Sri Lanka," 2024.</p>
+              
+              <p><span className="font-semibold">[10]</span> "Evaluation of the technological gap in quantity surveying practices: Sri Lankan context vs global context," 2023.</p>
+              
+              <p><span className="font-semibold">[11]</span> "Quantity surveyor's perspective on document management in construction projects: An exploratory study in Sri Lanka," 2023.</p>
+              
+              <p><span className="font-semibold">[12]</span> "Building Information Modelling adoption for better cost estimation: Sri Lankan perspective," 2018.</p>
+              
+              <p><span className="font-semibold">[13]</span> A. G. D. Premalal and R. K. P. C. B. Mudalige, "Identification of significant factors influencing cost overruns in construction projects of Sri Lanka," in Proc. Annu. Tech. Session, Inst. Quantity Surveyors Sri Lanka (IQSSL), Colombo, Sri Lanka, 2020.</p>
+              
+              <p><span className="font-semibold">[14]</span> S. M. H. Fernando, P. H. G. M. A. Ranasinghe, and H. D. Subhasingha, "Adaptability of emerging technologies by Sri Lankan construction SMEs: A social sustainability perspective," in Proc. Int. Conf. Smart Engineering, Technology and Sustainability, Springer, 2024, pp. 45–58.</p>
+              
+              <p><span className="font-semibold">[15]</span> K. Manoharana, P. Dissanayake, C. Pathirana, D. Deegahawature, and R. Silva, "Assessment of critical factors influencing the performance of labour in Sri Lankan construction industry," Int. J. Constr. Manag., vol. 23, no. 1, pp. 1–12, 2023.</p>
+              
+              <p><span className="font-semibold">[16]</span> K. B. S. Ruwansiri, "Factors affecting time and cost overrun in rural construction projects in Sri Lanka," M.S. thesis, Dept. Civil Eng., Univ. of Moratuwa, Moratuwa, Sri Lanka, 2021.</p>
+              
+              <p><span className="font-semibold">[17]</span> Y. Pan and L. Zhang, "Roles of artificial intelligence in construction engineering and management: A critical review and future trends," Autom. Constr., vol. 122, p. 103517, 2021.</p>
+              
+              <p><span className="font-semibold">[18]</span> Y. Pan and L. Zhang, "Roles of artificial intelligence in construction engineering and management: A critical review and future trends," Autom. Constr., vol. 122, p. 103517, 2021.</p>
+              
+              <p><span className="font-semibold">[19]</span> M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi, "Automated system for high-accuracy quantity takeoff using BIM," Autom. Constr., vol. 155, p. 105054, Nov. 2023.</p>
+              
+              <p><span className="font-semibold">[20]</span> M. O. Sanni-Anibire, R. M. Zin, and S. O. Olatunji, "Developing a machine learning model to predict the construction duration of tall building projects," J. Constr. Eng., Manag. Innov., vol. 4, no. 1, pp. 22–36, 2021.</p>
+              
+              <p><span className="font-semibold">[21]</span> B. Ekanayake, J. K.-W. Wong, A. A. F. Fini, and P. Smith, "Computer vision-based interior construction progress monitoring: A literature review and future research directions," Autom. Constr., vol. 127, p. 103705, 2021.</p>
+              
+              <p><span className="font-semibold">[22]</span> A. Urbonas, V. Raudonis, R. Maskeliunas, and R. Damasevicius, "Automated identification of wood veneer surface defects using faster region based convolutional neural network with data augmentation and transfer learning," Appl. Sci., vol. 9, no. 22, p. 4898, 2019.</p>
+              
+              <p><span className="font-semibold">[23]</span> S. Kim, K. Kim, and S. Park, "A data-driven approach for construction cost estimation using machine learning techniques," Journal of Construction Engineering and Management, vol. 146, no. 3, pp. 1–12, 2020.</p>
+              
+              <p><span className="font-semibold">[24]</span> M. Marzouk and M. Elkadi, "Estimating construction costs using artificial intelligence techniques," HBRC Journal, vol. 15, no. 1, pp. 1–12, 2019.</p>
+              
+              <p><span className="font-semibold">[25]</span> T. Chen and C. Guestrin, "XGBoost: A scalable tree boosting system," in Proc. ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining, 2016, pp. 785–794.</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* CTA banner */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} custom={0}>
           <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-950 shadow-2xl shadow-slate-900/20 border border-slate-800 p-12 md:p-24 text-center">
