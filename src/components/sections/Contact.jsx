@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, MapPin, GitBranch, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, GitBranch, MessageSquare, ArrowRight, BookOpen, Zap, Building2 } from 'lucide-react';
+import { useState } from 'react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -87,6 +88,163 @@ const contacts = [
     phone: "+94 71 945 6781",
   },
 ];
+
+const references = [
+  { id: 1, category: "Vision", year: 2019, title: "Deep floor plan recognition using a multi-task network with room-boundary-guided attention", authors: "Z. Zeng, X. Li, Y. K. Yu, and C.-W. Fu", venue: "IEEE/CVF Int. Conf. Comput. Vision (ICCV)" },
+  { id: 2, category: "Vision", year: 2020, title: "Symbol spotting on digital architectural floor plans using a deep learning-based framework", authors: "A. Rezvanifar, M. Cartwright, and U. Bhatt", venue: "IEEE/CVF Conf. Comput. Vision Pattern Recognit. Workshops" },
+  { id: 3, category: "BIM", year: 2023, title: "Automated system for high-accuracy quantity takeoff using BIM", authors: "M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi", venue: "Automation in Construction" },
+  { id: 4, category: "ML", year: 2021, title: "Construction duration prediction using machine learning: A case study", authors: "W. Wang, H. Li, and X. Wang", venue: "Automation in Construction" },
+  { id: 5, category: "Vision", year: 2020, title: "Automated digital modeling of existing buildings: A review of visual object recognition methods", authors: "T. Czerniawski and F. Leite", venue: "Automation in Construction" },
+  { id: 6, category: "BIM", year: 2019, title: "Combining inverse photogrammetry and BIM for automated labeling of construction site images for machine learning", authors: "A. Braun and A. Borrmann", venue: "Automation in Construction" },
+  { id: 7, category: "Vision", year: 2022, title: "Automatic floor plan analysis and recognition", authors: "D. Liciotti, M. Paolanti, R. Pietrini, E. Frontoni, and P. Zingaretti", venue: "Automation in Construction" },
+  { id: 8, category: "Sri Lanka", year: 2023, title: "Status quo of digitalisation in the Sri Lankan construction industry", authors: "W. S. D. Perera, K. A. T. O. Ranadewa, A. Parameswaran, and D. Weerasooriya", venue: "World Construction Symposium" },
+  { id: 9, category: "Sri Lanka", year: 2024, title: "Investigating the challenges of software adoption among quantity surveyors in Sri Lanka", authors: "I. N. Vod and N. Kawmudi", venue: "Research" },
+  { id: 10, category: "Sri Lanka", year: 2023, title: "Evaluation of the technological gap in quantity surveying practices: Sri Lankan context vs global context", authors: "Author Unknown", venue: "Research" },
+  { id: 11, category: "Sri Lanka", year: 2023, title: "Quantity surveyor's perspective on document management in construction projects: An exploratory study in Sri Lanka", authors: "Author Unknown", venue: "Research" },
+  { id: 12, category: "BIM", year: 2018, title: "Building Information Modelling adoption for better cost estimation: Sri Lankan perspective", authors: "Author Unknown", venue: "Research" },
+  { id: 13, category: "Sri Lanka", year: 2020, title: "Identification of significant factors influencing cost overruns in construction projects of Sri Lanka", authors: "A. G. D. Premalal and R. K. P. C. B. Mudalige", venue: "IQSSL Annual Tech. Session" },
+  { id: 14, category: "Sri Lanka", year: 2024, title: "Adaptability of emerging technologies by Sri Lankan construction SMEs: A social sustainability perspective", authors: "S. M. H. Fernando, P. H. G. M. A. Ranasinghe, and H. D. Subhasingha", venue: "Int. Conf. Smart Engineering" },
+  { id: 15, category: "Construction", year: 2023, title: "Assessment of critical factors influencing the performance of labour in Sri Lankan construction industry", authors: "K. Manoharana, P. Dissanayake, C. Pathirana, D. Deegahawature, and R. Silva", venue: "Int. J. Constr. Manag." },
+  { id: 16, category: "Construction", year: 2021, title: "Factors affecting time and cost overrun in rural construction projects in Sri Lanka", authors: "K. B. S. Ruwansiri", venue: "M.S. thesis, Univ. of Moratuwa" },
+  { id: 17, category: "AI", year: 2021, title: "Roles of artificial intelligence in construction engineering and management: A critical review and future trends", authors: "Y. Pan and L. Zhang", venue: "Automation in Construction" },
+  { id: 18, category: "AI", year: 2021, title: "Roles of artificial intelligence in construction engineering and management: A critical review and future trends", authors: "Y. Pan and L. Zhang", venue: "Automation in Construction" },
+  { id: 19, category: "BIM", year: 2023, title: "Automated system for high-accuracy quantity takeoff using BIM", authors: "M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi", venue: "Automation in Construction" },
+  { id: 20, category: "ML", year: 2021, title: "Developing a machine learning model to predict the construction duration of tall building projects", authors: "M. O. Sanni-Anibire, R. M. Zin, and S. O. Olatunji", venue: "J. Constr. Eng., Manag. Innov." },
+  { id: 21, category: "Vision", year: 2021, title: "Computer vision-based interior construction progress monitoring: A literature review and future research directions", authors: "B. Ekanayake, J. K.-W. Wong, A. A. F. Fini, and P. Smith", venue: "Automation in Construction" },
+  { id: 22, category: "Vision", year: 2019, title: "Automated identification of wood veneer surface defects using faster region based convolutional neural network with data augmentation and transfer learning", authors: "A. Urbonas, V. Raudonis, R. Maskeliunas, and R. Damasevicius", venue: "Applied Sciences" },
+  { id: 23, category: "ML", year: 2020, title: "A data-driven approach for construction cost estimation using machine learning techniques", authors: "S. Kim, K. Kim, and S. Park", venue: "Journal of Construction Engineering and Management" },
+  { id: 24, category: "ML", year: 2019, title: "Estimating construction costs using artificial intelligence techniques", authors: "M. Marzouk and M. Elkadi", venue: "HBRC Journal" },
+  { id: 25, category: "ML", year: 2016, title: "XGBoost: A scalable tree boosting system", authors: "T. Chen and C. Guestrin", venue: "ACM SIGKDD Int. Conf." },
+];
+
+const categories = [
+  { name: "All", icon: BookOpen, color: "text-slate-600", bg: "bg-slate-50" },
+  { name: "Vision", icon: Zap, color: "text-blue-600", bg: "bg-blue-50" },
+  { name: "AI", icon: Zap, color: "text-indigo-600", bg: "bg-indigo-50" },
+  { name: "ML", icon: Building2, color: "text-purple-600", bg: "bg-purple-50" },
+  { name: "BIM", icon: Building2, color: "text-rose-600", bg: "bg-rose-50" },
+  { name: "Sri Lanka", icon: MapPin, color: "text-emerald-600", bg: "bg-emerald-50" },
+  { name: "Construction", icon: Building2, color: "text-orange-600", bg: "bg-orange-50" },
+];
+
+function ReferenceSection() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [expandedId, setExpandedId] = useState(null);
+  
+  const filtered = activeCategory === "All" ? references : references.filter(r => r.category === activeCategory);
+
+  return (
+    <div className="max-w-6xl mx-auto">
+      {/* Header */}
+      <div className="mb-12 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">References</h2>
+        <p className="text-slate-600 text-lg">Explore {references.length} research papers curated for this project</p>
+      </div>
+
+      {/* Category Filter */}
+      <div className="flex flex-wrap gap-3 mb-12 justify-center">
+        {categories.map((cat) => (
+          <motion.button
+            key={cat.name}
+            onClick={() => setActiveCategory(cat.name)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 md:px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
+              activeCategory === cat.name
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            {cat.name}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* References Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {filtered.map((ref, idx) => (
+          <motion.div
+            key={ref.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: idx * 0.05 }}
+            onClick={() => setExpandedId(expandedId === ref.id ? null : ref.id)}
+            className="group cursor-pointer"
+          >
+            <Card className="h-full border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-500 overflow-hidden bg-white hover:bg-blue-50/30">
+              <div className="h-1 bg-gradient-to-r from-blue-600 to-indigo-600" />
+              <CardContent className="p-6">
+                {/* Top Row */}
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3 flex-1">
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-600 font-bold text-sm shrink-0">
+                      {ref.id}
+                    </span>
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">
+                      {ref.year}
+                    </span>
+                  </div>
+                  <span className="text-slate-400 text-2xl font-light group-hover:text-blue-600 transition-colors">
+                    {expandedId === ref.id ? '−' : '+'}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-bold text-slate-900 mb-3 text-base leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  {ref.title}
+                </h3>
+
+                {/* Category Badge */}
+                <div className="mb-4">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-blue-600 bg-blue-100">
+                    {ref.category}
+                  </span>
+                </div>
+
+                {/* Authors - Always visible */}
+                <p className="text-sm text-slate-600 font-medium mb-2 line-clamp-1">
+                  {ref.authors}
+                </p>
+
+                {/* Expanded Content */}
+                <motion.div
+                  initial={false}
+                  animate={{ height: expandedId === ref.id ? "auto" : 0, opacity: expandedId === ref.id ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 border-t border-slate-200 space-y-3">
+                    <div>
+                      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Venue</p>
+                      <p className="text-sm text-slate-700">{ref.venue}</p>
+                    </div>
+                    <a
+                      href="#"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline group/link"
+                    >
+                      View Reference
+                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Results Count */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="mt-12 text-center text-slate-600 text-sm"
+      >
+        Showing <span className="font-bold text-slate-900">{filtered.length}</span> of <span className="font-bold text-slate-900">{references.length}</span> references
+      </motion.div>
+    </div>
+  );
+}
 
 export default function Contact() {
   return (
@@ -179,60 +337,7 @@ export default function Contact() {
 
         {/* References Section */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} custom={0} className="mt-24 md:mt-32 py-16 md:py-24 border-t border-slate-200">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">References</h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed text-sm md:text-base">
-              <p><span className="font-semibold">[1]</span> Z. Zeng, X. Li, Y. K. Yu, and C.-W. Fu, "Deep floor plan recognition using a multi-task network with room-boundary-guided attention," in Proc. IEEE/CVF Int. Conf. Comput. Vision (ICCV), Seoul, South Korea, 2019, pp. 9096–9104.</p>
-              
-              <p><span className="font-semibold">[2]</span> A. Rezvanifar, M. Cartwright, and U. Bhatt, "Symbol spotting on digital architectural floor plans using a deep learning-based framework," in Proc. IEEE/CVF Conf. Comput. Vision Pattern Recognit. Workshops (CVPRW), Seattle, WA, USA, 2020, pp. 626–627.</p>
-              
-              <p><span className="font-semibold">[3]</span> M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi, "Automated system for high-accuracy quantity takeoff using BIM," Autom. Constr., vol. 155, p. 105054, Nov. 2023.</p>
-              
-              <p><span className="font-semibold">[4]</span> W. Wang, H. Li, and X. Wang, "Construction duration prediction using machine learning: A case study," Automation in Construction, vol. 127, p. 103705, 2021.</p>
-              
-              <p><span className="font-semibold">[5]</span> T. Czerniawski and F. Leite, "Automated digital modeling of existing buildings: A review of visual object recognition methods," Autom. Constr., vol. 113, p. 103131, 2020.</p>
-              
-              <p><span className="font-semibold">[6]</span> A. Braun and A. Borrmann, "Combining inverse photogrammetry and BIM for automated labeling of construction site images for machine learning," Autom. Constr., vol. 106, p. 102879, 2019.</p>
-              
-              <p><span className="font-semibold">[7]</span> D. Liciotti, M. Paolanti, R. Pietrini, E. Frontoni, and P. Zingaretti, "Automatic floor plan analysis and recognition," Autom. Constr., vol. 140, p. 104348, 2022.</p>
-              
-              <p><span className="font-semibold">[8]</span> W. S. D. Perera, K. A. T. O. Ranadewa, A. Parameswaran, and D. Weerasooriya, "Status quo of digitalisation in the Sri Lankan construction industry," in Proc. 11th World Construction Symposium, Sri Lanka, 2023, pp. 944–959.</p>
-              
-              <p><span className="font-semibold">[9]</span> I. N. Vod and N. Kawmudi, "Investigating the challenges of software adoption among quantity surveyors in Sri Lanka," 2024.</p>
-              
-              <p><span className="font-semibold">[10]</span> "Evaluation of the technological gap in quantity surveying practices: Sri Lankan context vs global context," 2023.</p>
-              
-              <p><span className="font-semibold">[11]</span> "Quantity surveyor's perspective on document management in construction projects: An exploratory study in Sri Lanka," 2023.</p>
-              
-              <p><span className="font-semibold">[12]</span> "Building Information Modelling adoption for better cost estimation: Sri Lankan perspective," 2018.</p>
-              
-              <p><span className="font-semibold">[13]</span> A. G. D. Premalal and R. K. P. C. B. Mudalige, "Identification of significant factors influencing cost overruns in construction projects of Sri Lanka," in Proc. Annu. Tech. Session, Inst. Quantity Surveyors Sri Lanka (IQSSL), Colombo, Sri Lanka, 2020.</p>
-              
-              <p><span className="font-semibold">[14]</span> S. M. H. Fernando, P. H. G. M. A. Ranasinghe, and H. D. Subhasingha, "Adaptability of emerging technologies by Sri Lankan construction SMEs: A social sustainability perspective," in Proc. Int. Conf. Smart Engineering, Technology and Sustainability, Springer, 2024, pp. 45–58.</p>
-              
-              <p><span className="font-semibold">[15]</span> K. Manoharana, P. Dissanayake, C. Pathirana, D. Deegahawature, and R. Silva, "Assessment of critical factors influencing the performance of labour in Sri Lankan construction industry," Int. J. Constr. Manag., vol. 23, no. 1, pp. 1–12, 2023.</p>
-              
-              <p><span className="font-semibold">[16]</span> K. B. S. Ruwansiri, "Factors affecting time and cost overrun in rural construction projects in Sri Lanka," M.S. thesis, Dept. Civil Eng., Univ. of Moratuwa, Moratuwa, Sri Lanka, 2021.</p>
-              
-              <p><span className="font-semibold">[17]</span> Y. Pan and L. Zhang, "Roles of artificial intelligence in construction engineering and management: A critical review and future trends," Autom. Constr., vol. 122, p. 103517, 2021.</p>
-              
-              <p><span className="font-semibold">[18]</span> Y. Pan and L. Zhang, "Roles of artificial intelligence in construction engineering and management: A critical review and future trends," Autom. Constr., vol. 122, p. 103517, 2021.</p>
-              
-              <p><span className="font-semibold">[19]</span> M. Valinejadshoubi, O. Moselhi, I. Iordanova, F. Valdivieso, and A. Bagchi, "Automated system for high-accuracy quantity takeoff using BIM," Autom. Constr., vol. 155, p. 105054, Nov. 2023.</p>
-              
-              <p><span className="font-semibold">[20]</span> M. O. Sanni-Anibire, R. M. Zin, and S. O. Olatunji, "Developing a machine learning model to predict the construction duration of tall building projects," J. Constr. Eng., Manag. Innov., vol. 4, no. 1, pp. 22–36, 2021.</p>
-              
-              <p><span className="font-semibold">[21]</span> B. Ekanayake, J. K.-W. Wong, A. A. F. Fini, and P. Smith, "Computer vision-based interior construction progress monitoring: A literature review and future research directions," Autom. Constr., vol. 127, p. 103705, 2021.</p>
-              
-              <p><span className="font-semibold">[22]</span> A. Urbonas, V. Raudonis, R. Maskeliunas, and R. Damasevicius, "Automated identification of wood veneer surface defects using faster region based convolutional neural network with data augmentation and transfer learning," Appl. Sci., vol. 9, no. 22, p. 4898, 2019.</p>
-              
-              <p><span className="font-semibold">[23]</span> S. Kim, K. Kim, and S. Park, "A data-driven approach for construction cost estimation using machine learning techniques," Journal of Construction Engineering and Management, vol. 146, no. 3, pp. 1–12, 2020.</p>
-              
-              <p><span className="font-semibold">[24]</span> M. Marzouk and M. Elkadi, "Estimating construction costs using artificial intelligence techniques," HBRC Journal, vol. 15, no. 1, pp. 1–12, 2019.</p>
-              
-              <p><span className="font-semibold">[25]</span> T. Chen and C. Guestrin, "XGBoost: A scalable tree boosting system," in Proc. ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining, 2016, pp. 785–794.</p>
-            </div>
-          </div>
+          <ReferenceSection />
         </motion.div>
 
         {/* CTA banner */}
