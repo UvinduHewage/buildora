@@ -39,7 +39,7 @@ const presentations = [
     date: "June 30, 2025",
     desc: "Complete research findings, conclusions, and recommendations.",
     status: "Completed",
-    link: "#",
+    link: "https://drive.google.com/file/d/1zqbCu2lE5_nq-jWEmZ_w1ZtHt2-JOEO6/view?usp=sharing",
   },
 ];
 
