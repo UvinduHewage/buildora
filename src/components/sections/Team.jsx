@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { Users, GraduationCap, Star, Mail, GitBranch, Globe } from 'lucide-react';
+import { Users, GraduationCap, Star, Mail, Share2 } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,10 +13,10 @@ const fadeUp = {
 };
 
 const team = [
-  { id: "IT22150998", name: "Vithana D.T.M.",      role: "Material Recommendation & Wood Quality",  module: "Module 01", color: "text-emerald-500", bg: "bg-emerald-500", badge: "bg-emerald-50 text-emerald-600 border-emerald-200", img: "/team/vithana.jpg" },
-  { id: "IT22172532", name: "Madhushan S.M.P.B.",  role: "Building Plan Analysis & 3D",             module: "Module 03", color: "text-purple-500",  bg: "bg-purple-500",  badge: "bg-purple-50 text-purple-600 border-purple-200", img: "/team/Bawantha.png" },
-  { id: "IT22574718", name: "Jayashani V.P.N.",    role: "Cost, Time & Progress Tracking",          module: "Module 02", color: "text-blue-500",    bg: "bg-blue-500",    badge: "bg-blue-50 text-blue-600 border-blue-200", img: "/team/jayashani.jpg" },
-  { id: "IT22196460", name: "U.U.M. Hewage",       role: "Smart Logistics & System Integration",    module: "Module 04", color: "text-amber-500",   bg: "bg-amber-500",   badge: "bg-amber-50 text-amber-600 border-amber-200", img: "/team/hewage.jpg"   },
+  { id: "IT22150998", name: "Vithana D.T.M.",      role: "Material Recommendation & Wood Quality",  module: "Module 01", color: "text-emerald-500", bg: "bg-emerald-500", badge: "bg-emerald-50 text-emerald-600 border-emerald-200", img: "/team/vithana.jpg", email: "dtm.vithana@gmail.com", linkedin: "https://www.linkedin.com/in/dineth-vithana-a746622b3/" },
+  { id: "IT22172532", name: "Madhushan S.M.P.B.",  role: "Building Plan Analysis & 3D",             module: "Module 03", color: "text-purple-500",  bg: "bg-purple-500",  badge: "bg-purple-50 text-purple-600 border-purple-200", img: "/team/Bawantha.png", email: "bawanthamadushan18@gmail.com", linkedin: "https://www.linkedin.com/in/bawantha-madhushan-6625712a4/" },
+  { id: "IT22574718", name: "Jayashani V.P.N.",    role: "Cost, Time & Progress Tracking",          module: "Module 02", color: "text-blue-500",    bg: "bg-blue-500",    badge: "bg-blue-50 text-blue-600 border-blue-200", img: "/team/jayashani.jpg", email: "nuwanthivpathirana@gmail.com", linkedin: "https://www.linkedin.com/in/nuwanthi-vitharana-b917302a0/" },
+  { id: "IT22196460", name: "U.U.M. Hewage",       role: "Smart Logistics & System Integration",    module: "Module 04", color: "text-amber-500",   bg: "bg-amber-500",   badge: "bg-amber-50 text-amber-600 border-amber-200", img: "/team/hewage.jpg", email: "hewageuvindu@gmail.com", linkedin: "https://www.linkedin.com/in/uvindu-hewage-89159a308/" },
 ];
 
 const supervisors = [
@@ -72,7 +72,17 @@ export default function Team() {
                     <p className="font-mono text-xs text-slate-400 font-medium tracking-wider">{member.id}</p>
                   </div>
 
-                  <p className="text-sm font-medium text-slate-500 leading-relaxed max-w-[220px] mx-auto text-balance px-2">{member.role}</p>
+                  <p className="text-sm font-medium text-slate-500 leading-relaxed max-w-[220px] mx-auto text-balance px-2 mb-4">{member.role}</p>
+
+                  {/* Social Links */}
+                  <div className="flex items-center justify-center gap-3 pt-2">
+                    <a href={`mailto:${member.email}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-slate-100 hover:bg-blue-100 transition-colors group/link">
+                      <Mail className="w-4 h-4 text-slate-600 group-hover/link:text-blue-600" />
+                    </a>
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-slate-100 hover:bg-blue-100 transition-colors group/link">
+                      <Share2 className="w-4 h-4 text-slate-600 group-hover/link:text-blue-600" />
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

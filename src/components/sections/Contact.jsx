@@ -114,7 +114,7 @@ export default function Contact() {
             <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Supervisors & Team Contact</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {contacts.slice(0, 3).map((c, i) => (
-                <motion.div key={c.title} variants={fadeUp} custom={i} whileHover={{ y: -8 }}>
+                <motion.div key={c.name} variants={fadeUp} custom={i} whileHover={{ y: -8 }}>
                   <Card className="relative border-2 border-slate-200 hover:shadow-xl transition-all duration-500 group h-full bg-white rounded-2xl overflow-hidden">
                     <div className={`h-1.5 w-full ${i === 0 ? 'bg-blue-500' : i === 1 ? 'bg-indigo-500' : 'bg-rose-500'}`} />
                     <CardContent className="p-8 md:p-10 flex flex-col gap-8">
@@ -143,7 +143,7 @@ export default function Contact() {
             <h3 className="text-lg font-bold text-slate-700 mb-6 px-2">Team Members</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {contacts.slice(3).map((c, i) => (
-                <motion.div key={c.title} variants={fadeUp} custom={i + 3} whileHover={{ y: -4 }}>
+                <motion.div key={c.name} variants={fadeUp} custom={i + 3} whileHover={{ y: -4 }}>
                   <Card className="relative border border-slate-200 hover:border-slate-400 hover:shadow-lg transition-all duration-500 group h-full bg-white rounded-xl overflow-hidden">
                     <div className={`h-1 w-full ${c.bg}`} />
                     <CardContent className="p-5 md:p-6 flex flex-col gap-4">
