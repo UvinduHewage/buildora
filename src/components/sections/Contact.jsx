@@ -336,9 +336,9 @@ export default function Contact() {
         </motion.div>
 
         {/* References Section */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} custom={0} className="mt-24 md:mt-32 py-16 md:py-24 border-t border-slate-200">
+        <div className="mt-24 md:mt-32 py-16 md:py-24 border-t border-slate-200">
           <ReferenceSection />
-        </motion.div>
+        </div>
 
         {/* CTA banner */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} custom={0}>
