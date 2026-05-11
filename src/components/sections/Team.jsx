@@ -43,6 +43,52 @@ export default function Team() {
           </motion.p>
         </motion.div>
 
+        {/* Supervisors Section */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} className="pt-8">
+          <div className="text-center mb-10">
+            <motion.h3 variants={fadeUp} custom={0} className="text-2xl font-bold text-slate-900 flex items-center justify-center gap-3">
+              <GraduationCap className="w-6 h-6 text-blue-600" />
+              Academic Supervisors
+            </motion.h3>
+          </div>
+
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+            {supervisors.map((s, i) => (
+              <motion.div key={s.name} variants={fadeUp} custom={i + 1} whileHover={{ y: -4 }}>
+                <Card className="border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 bg-white rounded-[1.5rem] p-6 lg:p-8 group h-full">
+                  <CardContent className="p-0 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 lg:gap-8 h-full">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-blue-500/20 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110" />
+                      <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-[2rem] bg-blue-50 flex items-center justify-center flex-shrink-0 overflow-hidden ring-4 ring-offset-[6px] ring-blue-100 group-hover:ring-blue-400 transition-all duration-500 relative z-10 shadow-lg">
+                        {s.img ? (
+                          <img src={s.img} alt={s.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <GraduationCap className="w-12 h-12 text-blue-600" />
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex-1 mt-2 sm:mt-4 min-w-0 pr-4">
+                      <Badge className={`text-xs font-bold mb-3 px-3 py-1 border-none shadow-none ${s.badge}`}>{s.title}</Badge>
+                      <p className="font-extrabold text-slate-900 text-xl lg:text-2xl mb-1.5 leading-tight break-words">{s.name}</p>
+                      <p className="text-sm font-medium text-slate-500">{s.dept} · {s.inst}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Team Members Section */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} className="mt-24">
+          <div className="text-center mb-10">
+            <motion.h3 variants={fadeUp} custom={0} className="text-2xl font-bold text-slate-900 flex items-center justify-center gap-3">
+              <Users className="w-6 h-6 text-blue-600" />
+              Research Team Members
+            </motion.h3>
+          </div>
+        </motion.div>
+
         {/* Team cards */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24 w-full">
           {team.map((member, i) => (
@@ -87,42 +133,6 @@ export default function Team() {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Supervisors Section */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} className="pt-8">
-          <div className="text-center mb-10">
-            <motion.h3 variants={fadeUp} custom={0} className="text-2xl font-bold text-slate-900 flex items-center justify-center gap-3">
-              <GraduationCap className="w-6 h-6 text-blue-600" />
-              Academic Supervisors
-            </motion.h3>
-          </div>
-
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
-            {supervisors.map((s, i) => (
-              <motion.div key={s.name} variants={fadeUp} custom={i + 1} whileHover={{ y: -4 }}>
-                <Card className="border-slate-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 bg-white rounded-[1.5rem] p-6 lg:p-8 group h-full">
-                  <CardContent className="p-0 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 lg:gap-8 h-full">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-blue-500/20 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110" />
-                      <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-[2rem] bg-blue-50 flex items-center justify-center flex-shrink-0 overflow-hidden ring-4 ring-offset-[6px] ring-blue-100 group-hover:ring-blue-400 transition-all duration-500 relative z-10 shadow-lg">
-                        {s.img ? (
-                          <img src={s.img} alt={s.name} className="w-full h-full object-cover" />
-                        ) : (
-                          <GraduationCap className="w-12 h-12 text-blue-600" />
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex-1 mt-2 sm:mt-4 min-w-0 pr-4">
-                      <Badge className={`text-xs font-bold mb-3 px-3 py-1 border-none shadow-none ${s.badge}`}>{s.title}</Badge>
-                      <p className="font-extrabold text-slate-900 text-xl lg:text-2xl mb-1.5 leading-tight break-words">{s.name}</p>
-                      <p className="text-sm font-medium text-slate-500">{s.dept} · {s.inst}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
         {/* Institute callout */}
